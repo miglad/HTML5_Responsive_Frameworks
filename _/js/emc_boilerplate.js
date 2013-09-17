@@ -21,7 +21,7 @@ function setupAccordion(a){
 		});
 	});
 }
-//you can 
+
 function setupModal(openerDiv, modalWindowDiv, w, pos, drag, resiz, hasSlider, sliderDiv){//setupModal($('#openerA'), $('#dialogA'), 980, top, true, true, true, $('#webExamplesSlider'));
 	modalWidth = w;
 	modalWindowDiv.dialog({ autoOpen: false,  modal:true, width:w, draggable: drag,resizable: resiz, position: pos});
@@ -34,14 +34,15 @@ function setupModal(openerDiv, modalWindowDiv, w, pos, drag, resiz, hasSlider, s
 		setUpSliderInModal(modalWindowDiv, sliderDiv);
 	}
 }
+
 function setUpSliderInModal(modalDiv, sliderDiv){//setUpSliderInModal($( "#dialogA" ), $('#webExamplesSlider'));
-		modalDiv.on( "dialogopen", function( event, ui ) { 
-			setupSlider(sliderDiv);
-		} );
+	modalDiv.on( "dialogopen", function( event, ui ) { 
+		setupSlider(sliderDiv);
+	} );
 }
+
 function setupSlider(div, thumbnail){
-	//TODO - change the following code to the new carousel framework 
-	/*if(thumbnail){
+	if(thumbnail){
 		div.flexslider({
 			animation: "slide",
 			animationLoop: false,
@@ -54,26 +55,26 @@ function setupSlider(div, thumbnail){
 	}else{
 		div.flexslider({
 			animation: "slide",
-			animationLoop: true,
-			slideshow: false,
-			asNavFor: '#slider',
 			pauseOnHover: true,           
-			touch: true
+			touch: true,
+			directionNav: true, 
+			animationLoop: false, 
+			slideshow: false
 		});
-	}*/
-	
+	}
 }
+
 function pickRandomImg(div, arr){
 		div.attr("src", arr[Number(randomNum(3)-1)] );
 		//console.log(div.attr("src"));
 		//console.dir(div);
 }
+
 function randomNum(max){
 	var num = Math.ceil(Math.random() * max);	
 	return num;
 }
 
-//feel free to edit
 function addHeader(headerID){
 	var headerContent = "";
 	headerContent +=  '<a class="logo homeLink" href="index.html"></a>';
@@ -81,7 +82,6 @@ function addHeader(headerID){
 	headerContent +=  '<a class="mainNav tk-ff-meta-web-pro toolsLink" id="toolsLink" href="index.html#toolsAnchor">TOOLS &amp; RESOURCES</a>';
 	headerContent +=  '<a class="mainNav tk-ff-meta-web-pro supportLink" id="supportLink" href="index.html#supportAnchor">Support</a>';
 	headerContent +=  '<div id="edServLogo"><span class="fallbackfont tk-ff-meta-web-pro">EDUCATION Services TeChnology</span></div>';
-	//console.log(headerContent);
 	$(headerID).html(headerContent);
 }
 
@@ -102,16 +102,16 @@ $(document).ready(function(){
 	//addHeader('#headerContainer');
 	//addFooter('#footerCopy');
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
-	//////////////////////////////////////////////////////////////////////
-	//////////////////////////////////////////////////////////////////////
 	setUp();
 	
 	$(function () {
 		$("#datepicker").datepicker({ maxDate: "-1D" }).attr('readonly', 'readonly');
 		$("#datepicker").readonlyDatepicker(true);
-	
 	});
+	
+	setupSlider($('#slider-1'));
 	
 	/*******************************
 	3. Load XML
